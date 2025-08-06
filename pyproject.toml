@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epo-ops-mcp-server"
+version = "0.1.0"
+description = "A server that exposes the European Patent Office's Open Patent Services API as an MCP server using fastMCP"
+readme = "README.md"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp",
+    "pydantic",
+    "python-epo-ops-client",
+    "dogpile.cache",
+    "pydantic-settings",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "black>=21.0",
+    "flake8>=3.0",
+]
+test = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "responses>=0.20.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/epo-ops-mcp-server"
+Repository = "https://github.com/your-username/epo-ops-mcp-server"
+
+[project.scripts]
+epo-ops-mcp-server = "epo_ops_mcp_server.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["epo_ops_mcp_server*"]
+
+[tool.setuptools.package-data]
+epo_ops_mcp_server = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--strict-config",
+    "--tb=short",
+]
