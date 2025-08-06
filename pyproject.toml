@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "A server that exposes the European Patent Office's Open Patent Services API as an MCP server using fastMCP"
 readme = "README.md"
 authors = [
-    {name = "Your Name", email = "your.email@example.com"},
+    {name = "jibsn", email = "jibsn@yandex.com"},
 ]
 license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
@@ -33,8 +33,8 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/epo-ops-mcp-server"
-Repository = "https://github.com/your-username/epo-ops-mcp-server"
+Homepage = "https://github.com/jibsn/epo-ops-mcp-server"
+Repository = "https://github.com/jibsn/epo-ops-mcp-server"
 
 [project.scripts]
 epo-ops-mcp-server = "epo_ops_mcp_server.main:main"

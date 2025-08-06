@@ -60,3 +60,4 @@ Thumbs.db
 
 Dockerfile
 *.egg-info/
+test_script.py

@@ -39,29 +39,27 @@ A server that exposes the European Patent Office's Open Patent Services API as a
    uv sync
    ```
 
-### Option 2: Using pip
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd epo-ops-mcp-server
-   ```
-
-2. Install dependencies:
-   ```
-   pip install -e .
-   ```
-
-3. Set up environment variables:
-   Create a `.env` file with your EPO OPS credentials:
-   ```
-   EPO_OPS_KEY=your_key_here
-   EPO_OPS_SECRET=your_secret_here
-   ```
 
 ## Usage
 
-1. Start the server:
+1. Set up environment variables:
+   Create a `.env` file with your EPO OPS credentials:
+   ```
+   # EPO OPS API credentials (required)
+   EPO_OPS_KEY=key
+   EPO_OPS_SECRET=secret
+
+   Server settings (optional)
+   SERVER_HOST=0.0.0.0
+   SERVER_PORT=8000
+
+   # Cache settings (optional)
+   CACHE_ENABLED=True
+   CACHE_PATH=/var/tmp/epo-ops-server/cache.dbm
+   ```
+
+2. Start the server:
    ```
    python main.py
    ```
@@ -70,6 +68,28 @@ A server that exposes the European Patent Office's Open Patent Services API as a
    ```
    uv run python main.py
    ```
+
+## MCP client configuration
+
+```
+"mcpServers": {
+    "epo-ops-mcp-server": {
+      "command": "uv",
+      "args": [
+        "run",
+        "python",
+        "main.py"
+      ],
+      "cwd": "path to epo-ops-mcp-server",
+      "env": {
+        "MCP_TRANSPORT_TYPE": "stdio",
+        "MCP_LOG_LEVEL": "debug"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+```
 
 ## MCP Tools
 
@@ -83,6 +103,7 @@ The server exposes the following tools that can be used by MCP clients:
 - `get_register` - Retrieve European Patent Register data
 - `search_register` - Search European Patent Register
 - `get_image` - Retrieve patent images
+
 
 ### Number Formats
 
